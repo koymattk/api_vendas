@@ -42,7 +42,7 @@ class ProductsController {
             quantity,
         });
 
-        res.json(product);
+        return res.json(product);
     }
 
     public async delete(req: Request, res: Response): Promise<Response> {

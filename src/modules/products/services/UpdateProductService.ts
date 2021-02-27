@@ -7,11 +7,11 @@ interface IRequest {
     id: string;
     name: string;
     price: number;
-    quanity: number;
+    quantity: number;
 }
 
 class UpdateProductService {
-    async execute({ id, name, price, quanity }: IRequest): Promise<Product> {
+    async execute({ id, name, price, quantity }: IRequest): Promise<Product> {
         const productRepository = getCustomRepository(ProductRepository);
 
         const product = await productRepository.findOne(id);
@@ -28,7 +28,7 @@ class UpdateProductService {
 
         product.name = name;
         product.price = price;
-        product.quantity = quanity;
+        product.quantity = quantity;
 
         return product;
     }
