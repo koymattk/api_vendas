@@ -50,7 +50,7 @@ class ProductsController {
 
         await DeleteProductService.execute({ id });
 
-        return res.json([]);
+        return res.json({ message: `produto de id ${id} exluido com sucesso` });
     }
 }
 
