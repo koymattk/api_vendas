@@ -4,6 +4,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import User from '../typeorm/entities/User';
 import UserRepository from '../typeorm/repositories/UserRepository';
+import authConfig from '@config/authConfig';
 
 interface IRequest {
     email: string;
@@ -28,9 +29,9 @@ class CreatSessionService {
             throw new AppError('email/password combination incorrect !', 401);
         }
 
-        const token = sign({}, 'd41d8cd98f00b204e9800998ecf8427e', {
+        const token = sign({}, authConfig.jwt.expiresIn, {
             subject: user.id,
-            expiresIn: '1d',
+            expiresIn: authConfig.jwt.secret,
         });
 
         return {
