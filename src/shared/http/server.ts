@@ -6,11 +6,13 @@ import { errors } from 'celebrate';
 import 'express-async-errors';
 import routes from './routes';
 import '@shared/typeorm';
+import updloadConfig from '@config/uploads';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static(updloadConfig.directory));
 app.use(routes);
 app.use(errors());
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
