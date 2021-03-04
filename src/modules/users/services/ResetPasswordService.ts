@@ -9,12 +9,11 @@ import { hash } from 'bcryptjs';
 
 interface IRequest {
     token: string;
-    user_id: string;
     password: string;
 }
 
 class ResetPasswordService {
-    async execute({ token, user_id, password }: IRequest): Promise<void> {
+    async execute({ token, password }: IRequest): Promise<void> {
         const userRepository = getCustomRepository(UserRepository);
         const userTokenRepository = getCustomRepository(UserTokenRepository);
 
