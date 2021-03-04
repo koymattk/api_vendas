@@ -3,6 +3,7 @@ import AppError from '@shared/errors/AppError';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import { errors } from 'celebrate';
+import 'express-async-errors';
 import routes from './routes';
 import '@shared/typeorm';
 import updloadConfig from '@config/uploads';
